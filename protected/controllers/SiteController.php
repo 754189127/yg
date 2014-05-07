@@ -82,6 +82,7 @@ class SiteController extends Controller
         {
             $model->attributes=$_POST['User'];
             // validate user input and redirect to the previous page if valid
+          
             if($model->validate()){
                 $result =  $model->login();
                 if($result){
