@@ -24,4 +24,12 @@ require(dirname(__FILE__).'/YiiBase.php');
  */
 class Yii extends YiiBase
 {
+    /**
+     * 返回Yii单例对象
+     * @return CApplication the application singleton, null if the singleton has not been created yet.
+     */
+    public static function app(){
+        return parent::app();
+    }
+
 }

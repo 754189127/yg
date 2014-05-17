@@ -2,15 +2,8 @@
 
 class MemberController extends Controller
 {
-	/**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
-	 */
 	public $layout='//layouts/column2';
 
-	/**
-	 * @return array action filters
-	 */
 	public function filters()
 	{
 		return array(
@@ -19,11 +12,6 @@ class MemberController extends Controller
 		);
 	}
 
-	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
 	public function accessRules()
 	{
 		return array(
@@ -45,10 +33,15 @@ class MemberController extends Controller
 		);
 	}
 
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
+    public function actionIndex()
+    {
+        $curPage = isset($_REQUEST['page'])?intval($_REQUEST['page']):1;
+        $result= Member::model()->getList($search,$curPage);
+
+        echo json_encode($list);
+        $this->render('index');
+    }
+
 	public function actionView($id)
 	{
 		$this->render('view',array(
@@ -56,10 +49,6 @@ class MemberController extends Controller
 		));
 	}
 
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
 	public function actionCreate()
 	{
 		$model=new Member;
@@ -117,17 +106,7 @@ class MemberController extends Controller
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('Member');
-        
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}
+
 
 	/**
 	 * Manages all models.

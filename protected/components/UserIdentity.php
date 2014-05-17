@@ -19,7 +19,7 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
-		$userModel = new User();
+		$userModel = new Manager();
         $userInfo = $userModel->safeLogin($this->username,$this->password);
         $this->userInfoModel = $userInfo;
       

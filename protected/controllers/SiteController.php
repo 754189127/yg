@@ -77,18 +77,16 @@ class SiteController extends Controller
 	 */
 	public function actionLogin()
 	{
-        $model=new User('login');
-        if(isset($_POST['User']))
+        $model=new Manager('login');
+        if(isset($_POST['Manager']))
         {
-            $model->attributes=$_POST['User'];
-            // validate user input and redirect to the previous page if valid
-          
+            $model->attributes=$_POST['Manager'];
             if($model->validate()){
                 $result =  $model->login();
                 if($result){
                     $this->redirect( $this->createUrl('member/index'));
                 }else{
-                    $model->addErrors('password','登录账号或密码有误');
+                    $model->addError('password','登录账号或密码有误');
                 }
             }
         }

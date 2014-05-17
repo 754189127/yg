@@ -5,7 +5,7 @@
  *
  * The followings are the available columns in table '{{member}}':
  * @property integer $id
- * @property string $username
+ * @property string $userCode
  * @property string $password
  * @property string $email
  */
@@ -27,11 +27,11 @@ class Member extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, password, email', 'required'),
-			array('username, password, email', 'length', 'max'=>128),
+			array('userCode, password, email', 'required'),
+			array('userCode, password, email', 'length', 'max'=>128),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, username, password, email', 'safe', 'on'=>'search'),
+			array('id, userCode, password, email', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,38 +53,27 @@ class Member extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'username' => 'Username',
+			'userCode' => 'userCode',
 			'password' => 'Password',
 			'email' => 'Email',
 		);
 	}
 
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 *
-	 * Typical usecase:
-	 * - Initialize the model fields with values from filter form.
-	 * - Execute this method to get CActiveDataProvider instance which will filter
-	 * models according to data in model fields.
-	 * - Pass data provider to CGridView, CListView or any similar widget.
-	 *
-	 * @return CActiveDataProvider the data provider that can return the models
-	 * based on the search/filter conditions.
-	 */
-	public function search()
+	public function getList($search,$curPage=1,$limit=10)
 	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
+        $sql = "select * from ".$this->tableName()." m ";
+        $sqlCount = "select count(1) count from ($sql)";
+        $row = Yii::app()->db->createCommand($sqlCount)->queryRow();
+        $count = $result['count'];
+        print_r($sql);exit;
 
-		$criteria=new CDbCriteria;
-
-		$criteria->compare('id',$this->id);
-		$criteria->compare('username',$this->username,true);
-		$criteria->compare('password',$this->password,true);
-		$criteria->compare('email',$this->email,true);
-
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
+        $sql .=" order by id desc";
+        $list = Yii::app()->db->createCommand($sql)->queryAll();
+        $data = array(
+            'list'       => $list,
+            'page'  => CMyFunc::pagination($count, $curPage,$limit)
+        );
+        return $data;
 	}
 
 	/**
