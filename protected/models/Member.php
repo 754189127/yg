@@ -59,22 +59,6 @@ class Member extends CActiveRecord
 		);
 	}
 
-	public function getList($search,$curPage=1,$limit=10)
-	{
-        $sql = "select * from ".$this->tableName()." m ";
-        $sqlCount = "select count(1) count from ($sql)";
-        $row = Yii::app()->db->createCommand($sqlCount)->queryRow();
-        $count = $result['count'];
-        print_r($sql);exit;
-
-        $sql .=" order by id desc";
-        $list = Yii::app()->db->createCommand($sql)->queryAll();
-        $data = array(
-            'list'       => $list,
-            'page'  => CMyFunc::pagination($count, $curPage,$limit)
-        );
-        return $data;
-	}
 
 	/**
 	 * Returns the static model of the specified AR class.

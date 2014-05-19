@@ -544,6 +544,7 @@ class YiiBase
 		'CGoogleApi' => '/web/helpers/CGoogleApi.php',
 		'CHtml' => '/web/helpers/CHtml.php',
 		'CJSON' => '/web/helpers/CJSON.php',
+		'CMyFunc' => '/web/helpers/CMyFunc.php',
 		'CJavaScript' => '/web/helpers/CJavaScript.php',
 		'CJavaScriptExpression' => '/web/helpers/CJavaScriptExpression.php',
 		'CPradoViewRenderer' => '/web/renderers/CPradoViewRenderer.php',
