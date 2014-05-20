@@ -16,6 +16,23 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`jnh` /*!40100 DEFAULT CHARACTER SET utf
 
 USE `jnh`;
 
+/*Table structure for table `tb_actionlog` */
+
+DROP TABLE IF EXISTS `tb_actionlog`;
+
+CREATE TABLE `tb_actionlog` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `action` varchar(50) default NULL COMMENT '操作行为',
+  `logDate` int(11) default NULL COMMENT '操作日期',
+  `userName` varchar(30) default NULL COMMENT '操作人员',
+  `userId` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC COMMENT='操作日志表';
+
+/*Data for the table `tb_actionlog` */
+
+insert  into `tb_actionlog`(`id`,`action`,`logDate`,`userName`,`userId`) values (1,'登录失败',1400567496,'demo44',0),(2,'登录失败',1400567496,'demo44',0),(3,'登录失败',1400567496,'demo44',0),(4,'登录成功',1400567522,'demo',1),(5,'登录成功',1400568397,'demo',1),(6,'登录成功',1400568457,'demo',1),(7,'登录成功',1400570445,'demo',1);
+
 /*Table structure for table `tb_company` */
 
 DROP TABLE IF EXISTS `tb_company`;
@@ -33,12 +50,12 @@ CREATE TABLE `tb_company` (
   `mobile2` varchar(30) default NULL COMMENT '电话2',
   `fax` varchar(15) default NULL COMMENT '传真',
   `email` varchar(30) default NULL COMMENT '邮箱',
-  `needTime` datetime default NULL COMMENT '订购所需时间',
+  `needTime` int(11) default NULL COMMENT '订购所需时间',
   `payMethod` tinyint(4) default NULL COMMENT '支付方式',
   `openingBank` varchar(30) default NULL COMMENT '开户行',
   `openingAccount` varchar(30) default NULL COMMENT '开户账号',
   `remark` varchar(150) default NULL COMMENT '备注',
-  `addDate` datetime default NULL COMMENT '创建日期',
+  `addDate` int(11) default NULL COMMENT '创建日期',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC COMMENT='厂商表';
 
@@ -87,8 +104,8 @@ CREATE TABLE `tb_manager` (
   `username` varchar(30) default NULL COMMENT '工号',
   `realname` varchar(30) default NULL COMMENT '姓名',
   `password` varchar(32) default NULL COMMENT '密码',
-  `lastUpdateDate` date default NULL COMMENT '最后修改日期',
-  `lastLoginDate` date default NULL COMMENT '最后登录日期',
+  `lastUpdateDate` int(11) default NULL COMMENT '最后修改日期',
+  `lastLoginDate` int(11) default NULL COMMENT '最后登录日期',
   `status` mediumint(1) default '1' COMMENT '启用(0-否，1-是)',
   `remark` varchar(100) default NULL COMMENT '备注',
   `permissions` varchar(255) default NULL COMMENT '权限',
@@ -97,7 +114,7 @@ CREATE TABLE `tb_manager` (
 
 /*Data for the table `tb_manager` */
 
-insert  into `tb_manager`(`id`,`roleId`,`username`,`realname`,`password`,`lastUpdateDate`,`lastLoginDate`,`status`,`remark`,`permissions`) values (1,1,'demo','demo','fe01ce2a7fbac8fafaed7c982a04e229','2014-05-15','2014-05-15',1,NULL,'all');
+insert  into `tb_manager`(`id`,`roleId`,`username`,`realname`,`password`,`lastUpdateDate`,`lastLoginDate`,`status`,`remark`,`permissions`) values (1,1,'demo','demo','fe01ce2a7fbac8fafaed7c982a04e229',0,1400570445,1,NULL,'all');
 
 /*Table structure for table `tb_member` */
 
@@ -112,9 +129,9 @@ CREATE TABLE `tb_member` (
   `source` smallint(6) default NULL COMMENT '会员来源',
   `birth` date default NULL COMMENT '生日',
   `remark` varchar(150) default NULL COMMENT '备注',
-  `addDate` datetime default NULL COMMENT '加入时间',
-  `lastBackPiecesDate` datetime default NULL COMMENT '最近退件时间',
-  `lastLoginDate` datetime default NULL COMMENT '最近登录时间',
+  `addDate` int(11) default NULL COMMENT '加入时间',
+  `lastBackPiecesDate` int(11) default NULL COMMENT '最近退件时间',
+  `lastLoginDate` int(11) default NULL COMMENT '最近登录时间',
   `status` smallint(6) default NULL COMMENT '状态（0-临时，1-正式，2-意向）',
   `account` decimal(10,2) default NULL COMMENT '账户余额',
   `youthStuck` mediumint(9) default NULL COMMENT '青春贴',
@@ -124,7 +141,7 @@ CREATE TABLE `tb_member` (
 
 /*Data for the table `tb_member` */
 
-insert  into `tb_member`(`id`,`periodicalId`,`userCode`,`realName`,`sex`,`source`,`birth`,`remark`,`addDate`,`lastBackPiecesDate`,`lastLoginDate`,`status`,`account`,`youthStuck`,`isAgent`) values (1,1,'00000001','name1',1,1,'1988-10-12',NULL,'2014-05-15 00:00:00','2014-05-15 00:00:00','2014-05-15 00:00:00',1,'0.00',0,0),(2,1,'00000002','name2',2,1,'1988-10-12',NULL,'2014-05-15 00:00:00','2014-05-15 00:00:00','2014-05-15 00:00:00',1,'0.00',0,0);
+insert  into `tb_member`(`id`,`periodicalId`,`userCode`,`realName`,`sex`,`source`,`birth`,`remark`,`addDate`,`lastBackPiecesDate`,`lastLoginDate`,`status`,`account`,`youthStuck`,`isAgent`) values (1,1,'00000001','name1',1,1,'1988-10-12',NULL,2014,2014,2014,1,'0.00',0,0),(2,1,'00000002','name2',2,1,'1988-10-12',NULL,2014,2014,2014,1,'0.00',0,0);
 
 /*Table structure for table `tb_memberaddrlib` */
 
@@ -160,7 +177,7 @@ CREATE TABLE `tb_orderremittance` (
   `receiptProceedsOffice` varchar(50) default NULL COMMENT '收汇局',
   `remitter` varchar(30) default NULL COMMENT '汇款人',
   `remittanceAmount` decimal(10,2) default NULL COMMENT '汇款金额',
-  `remittanceDate` datetime default NULL COMMENT '汇款日期',
+  `remittanceDate` int(11) default NULL COMMENT '汇款日期',
   `preferentialTicket` decimal(10,2) default NULL COMMENT '抵价券',
   `youthStuck` mediumint(9) default NULL COMMENT '青春贴',
   `unDiscountAmount` decimal(10,2) default NULL COMMENT '不打折金额',
@@ -170,11 +187,11 @@ CREATE TABLE `tb_orderremittance` (
   `address` varchar(100) default NULL COMMENT '地址',
   `remark` varchar(150) default NULL COMMENT '备注',
   `isRemittanceReceived` tinyint(1) default NULL COMMENT '是否收到汇款(0-否,1-是)',
-  `remittanceReceivedDate` datetime default NULL COMMENT '收到汇款日期',
+  `remittanceReceivedDate` int(11) default NULL COMMENT '收到汇款日期',
   `isOrderReceived` tinyint(1) default NULL COMMENT '是否收到订单(0-否,1-是)',
-  `orderReceivedDate` datetime default NULL COMMENT '收到订单日期',
+  `orderReceivedDate` int(11) default NULL COMMENT '收到订单日期',
   `status` tinyint(1) default '0' COMMENT '订单状态',
-  `addDate` datetime default NULL COMMENT '创建日期',
+  `addDate` int(11) default NULL COMMENT '创建日期',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC COMMENT='汇款订购表(会员购买流程表) ';
 
@@ -189,9 +206,9 @@ CREATE TABLE `tb_receipt` (
   `companyId` int(11) default NULL COMMENT '厂商id',
   `receiptCode` varchar(30) default NULL COMMENT '进货编号',
   `purchaseAmount` decimal(10,2) default NULL COMMENT '进货金额',
-  `receiptDate` datetime default NULL COMMENT '进货日期',
+  `receiptDate` int(11) default NULL COMMENT '进货日期',
   `remark` varchar(150) default NULL COMMENT '备注',
-  `addDate` datetime default NULL COMMENT '创建日期',
+  `addDate` int(11) default NULL COMMENT '创建日期',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC COMMENT='进货单表';
 

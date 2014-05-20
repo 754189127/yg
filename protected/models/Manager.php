@@ -105,13 +105,15 @@ class Manager extends CActiveRecord
     public function safeLogin($username,$password){
 
     	$data = $this->find("username=:username and password=:password", array(':username' => $username,'password'=>md5($password)));
-        if(!$data)
+        if(!$data){
+            $Actionlog =  new Actionlog();
+            $Actionlog->saveLog('登录失败',$username);
     		return null;
-
+        }
         // 记录当前用户SESSION.
         Yii::app()->user->setState('userId', $data->id);                    // 用户ID
-        Yii::app()->user->setState('username', $data->username);      // 用户名
-        Yii::app()->user->setState('realname', $data->realname);      // 用户名
+        Yii::app()->user->setState('userName', $data->username);      // 用户名
+        Yii::app()->user->setState('realName', $data->realname);      // 用户名
         //角色
     	/*$userRole = AdminUserRole::model()->getUserRole($userLogin->ADMIN_USER_ID);
         Yii::app()->user->setState('ROLE', $userRole['ROLEID']);                  // 角色ID
@@ -121,16 +123,15 @@ class Manager extends CActiveRecord
         	// 自动添加所有权限
         	AdminRole::model()->autoAddPriv();
         }
-
-        // 保存当前登录信息
-        $sqlString = "UPDATE " . $this->tableName() . " SET LAST_IP='{$loginIP}', LOGIN_TIMES=LOGIN_TIMES+1, LAST_LOGIN_TIME=sysdate WHERE USER_NAME='{$userLogin->USER_NAME}'";
-        Yii::app()->db->createCommand($sqlString)->query();
-        
-        // 保存登录日志文件
-        $userLog = new UserLog; 
-        $logTitle = '用户登录';
-        $userLog->saveData($logTitle);
         */
+        // 保存当前登录信息
+        $sqlString = "UPDATE " . $this->tableName() . " SET lastLoginDate='".time()."'  WHERE id='".$data->id."'";
+        //echo $sqlString;exit;
+        Yii::app()->db->createCommand($sqlString)->query();
+
+        // 保存登录日志文件
+        $Actionlog =  new Actionlog();
+        $Actionlog->saveLog('登录成功',$username);
         return  $data;
     }
 	/**

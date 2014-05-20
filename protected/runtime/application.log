@@ -4126,3 +4126,356 @@ Stack trace:
 #7 {main}
 REQUEST_URI=/index.php?r=member/view/1
 ---
+2014/05/20 03:42:54 [error] [php] date() expects at least 1 parameter, 0 given (D:\AppServ\www\ygjnh\protected\models\Manager.php:126)
+Stack trace:
+#0 D:\AppServ\www\ygjnh\protected\models\Manager.php(90): UserIdentity->authenticate()
+#1 D:\AppServ\www\ygjnh\protected\controllers\SiteController.php(85): Manager->login()
+#2 D:\AppServ\www\ygjnh\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#3 D:\AppServ\www\ygjnh\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 D:\AppServ\www\ygjnh\framework\web\CController.php(286): SiteController->runAction()
+#5 D:\AppServ\www\ygjnh\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#6 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(282): SiteController->run()
+#7 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 D:\AppServ\www\ygjnh\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 D:\AppServ\www\ygjnh\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/site/login
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (126)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (90)
+2014/05/20 03:57:17 [error] [php] date() expects at least 1 parameter, 0 given (D:\AppServ\www\ygjnh\protected\models\Manager.php:134)
+Stack trace:
+#0 D:\AppServ\www\ygjnh\protected\models\Manager.php(90): UserIdentity->authenticate()
+#1 D:\AppServ\www\ygjnh\protected\controllers\SiteController.php(85): Manager->login()
+#2 D:\AppServ\www\ygjnh\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#3 D:\AppServ\www\ygjnh\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 D:\AppServ\www\ygjnh\framework\web\CController.php(286): SiteController->runAction()
+#5 D:\AppServ\www\ygjnh\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#6 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(282): SiteController->run()
+#7 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 D:\AppServ\www\ygjnh\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 D:\AppServ\www\ygjnh\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/site/login
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (134)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (90)
+2014/05/20 06:06:24 [error] [php] date() expects at least 1 parameter, 0 given (D:\AppServ\www\ygjnh\protected\models\Actionlog.php:64)
+Stack trace:
+#0 D:\AppServ\www\ygjnh\protected\components\UserIdentity.php(23): Manager->safeLogin()
+#1 D:\AppServ\www\ygjnh\protected\models\Manager.php(90): UserIdentity->authenticate()
+#2 D:\AppServ\www\ygjnh\protected\controllers\SiteController.php(85): Manager->login()
+#3 D:\AppServ\www\ygjnh\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#4 D:\AppServ\www\ygjnh\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\AppServ\www\ygjnh\framework\web\CController.php(286): SiteController->runAction()
+#6 D:\AppServ\www\ygjnh\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(282): SiteController->run()
+#8 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\AppServ\www\ygjnh\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\AppServ\www\ygjnh\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/site/login
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (64)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (132)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:06:53 [error] [php] date() expects at least 1 parameter, 0 given (D:\AppServ\www\ygjnh\protected\models\Actionlog.php:64)
+Stack trace:
+#0 D:\AppServ\www\ygjnh\protected\components\UserIdentity.php(23): Manager->safeLogin()
+#1 D:\AppServ\www\ygjnh\protected\models\Manager.php(90): UserIdentity->authenticate()
+#2 D:\AppServ\www\ygjnh\protected\controllers\SiteController.php(85): Manager->login()
+#3 D:\AppServ\www\ygjnh\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#4 D:\AppServ\www\ygjnh\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\AppServ\www\ygjnh\framework\web\CController.php(286): SiteController->runAction()
+#6 D:\AppServ\www\ygjnh\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(282): SiteController->run()
+#8 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\AppServ\www\ygjnh\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\AppServ\www\ygjnh\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/site/login
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (64)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (132)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:16:36 [error] [system.db.CDbCommand] CDbCommand::() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')  WHERE id='1'' at line 1. The SQL statement executed was: UPDATE tb_manager SET lastLoginDate=time()  WHERE id='1'.
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (129)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (90)
+2014/05/20 06:16:36 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')  WHERE id='1'' at line 1. The SQL statement executed was: UPDATE tb_manager SET lastLoginDate=time()  WHERE id='1'' in D:\AppServ\www\ygjnh\framework\db\CDbCommand.php:543
+Stack trace:
+#0 D:\AppServ\www\ygjnh\framework\db\CDbCommand.php(377): CDbCommand->queryInternal('', 0, Array)
+#1 D:\AppServ\www\ygjnh\protected\models\Manager.php(129): CDbCommand->query()
+#2 D:\AppServ\www\ygjnh\protected\components\UserIdentity.php(23): Manager->safeLogin('demo', 'demo')
+#3 D:\AppServ\www\ygjnh\protected\models\Manager.php(90): UserIdentity->authenticate()
+#4 D:\AppServ\www\ygjnh\protected\controllers\SiteController.php(85): Manager->login()
+#5 D:\AppServ\www\ygjnh\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#6 D:\AppServ\www\ygjnh\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 D:\AppServ\www\ygjnh\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#8 D:\AppServ\www\ygjnh\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(282): CController->run('login')
+#10 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#11 D:\AppServ\www\ygjnh\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#12 D:\AppServ\www\ygjnh\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/index.php/site/login
+HTTP_REFERER=http://www.yii.com/index.php/site/login
+---
+2014/05/20 06:17:05 [error] [system.db.CDbCommand] CDbCommand::() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')  WHERE id='1'' at line 1. The SQL statement executed was: UPDATE tb_manager SET lastLoginDate=time()  WHERE id='1'.
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (129)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (90)
+2014/05/20 06:17:05 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')  WHERE id='1'' at line 1. The SQL statement executed was: UPDATE tb_manager SET lastLoginDate=time()  WHERE id='1'' in D:\AppServ\www\ygjnh\framework\db\CDbCommand.php:543
+Stack trace:
+#0 D:\AppServ\www\ygjnh\framework\db\CDbCommand.php(377): CDbCommand->queryInternal('', 0, Array)
+#1 D:\AppServ\www\ygjnh\protected\models\Manager.php(129): CDbCommand->query()
+#2 D:\AppServ\www\ygjnh\protected\components\UserIdentity.php(23): Manager->safeLogin('demo', 'demo')
+#3 D:\AppServ\www\ygjnh\protected\models\Manager.php(90): UserIdentity->authenticate()
+#4 D:\AppServ\www\ygjnh\protected\controllers\SiteController.php(85): Manager->login()
+#5 D:\AppServ\www\ygjnh\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#6 D:\AppServ\www\ygjnh\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 D:\AppServ\www\ygjnh\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#8 D:\AppServ\www\ygjnh\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(282): CController->run('login')
+#10 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#11 D:\AppServ\www\ygjnh\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#12 D:\AppServ\www\ygjnh\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/index.php/site/login
+HTTP_REFERER=http://www.yii.com/index.php/site/login
+---
+2014/05/20 06:26:34 [error] [exception.CDbException] exception 'CDbException' with message 'No columns are being updated for table "tb_actionlog".' in D:\AppServ\www\ygjnh\framework\db\schema\CDbCommandBuilder.php:392
+Stack trace:
+#0 D:\AppServ\www\ygjnh\framework\db\ar\CActiveRecord.php(1747): CDbCommandBuilder->createUpdateCommand(Object(CMysqlTableSchema), Array, Object(CDbCriteria))
+#1 D:\AppServ\www\ygjnh\framework\db\ar\CActiveRecord.php(1124): CActiveRecord->updateByPk(NULL, Array)
+#2 D:\AppServ\www\ygjnh\framework\db\ar\CActiveRecord.php(806): CActiveRecord->update(NULL)
+#3 D:\AppServ\www\ygjnh\protected\models\Actionlog.php(64): CActiveRecord->save()
+#4 D:\AppServ\www\ygjnh\protected\models\Manager.php(110): Actionlog->saveLog('????????????', 'demo')
+#5 D:\AppServ\www\ygjnh\protected\components\UserIdentity.php(23): Manager->safeLogin('demo', 'dfaf')
+#6 D:\AppServ\www\ygjnh\protected\models\Manager.php(90): UserIdentity->authenticate()
+#7 D:\AppServ\www\ygjnh\protected\controllers\SiteController.php(85): Manager->login()
+#8 D:\AppServ\www\ygjnh\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#9 D:\AppServ\www\ygjnh\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 D:\AppServ\www\ygjnh\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 D:\AppServ\www\ygjnh\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(282): CController->run('login')
+#13 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#14 D:\AppServ\www\ygjnh\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 D:\AppServ\www\ygjnh\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php/site/login
+HTTP_REFERER=http://www.yii.com/index.php/site/login
+---
+2014/05/20 06:28:29 [warning] [application] Failed to set unsafe attribute "action" of "Actionlog".
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (63)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (110)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:28:29 [warning] [application] Failed to set unsafe attribute "userName" of "Actionlog".
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (63)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (110)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:28:29 [warning] [application] Failed to set unsafe attribute "logDate" of "Actionlog".
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (63)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (110)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:28:29 [warning] [application] Failed to set unsafe attribute "userId" of "Actionlog".
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (63)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (110)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:28:41 [warning] [application] Failed to set unsafe attribute "action" of "Actionlog".
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (63)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (110)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:28:41 [warning] [application] Failed to set unsafe attribute "userName" of "Actionlog".
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (63)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (110)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:28:41 [warning] [application] Failed to set unsafe attribute "logDate" of "Actionlog".
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (63)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (110)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:28:41 [warning] [application] Failed to set unsafe attribute "userId" of "Actionlog".
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (63)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (110)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:28:41 [error] [exception.CDbException] exception 'CDbException' with message 'No columns are being updated for table "tb_actionlog".' in D:\AppServ\www\ygjnh\framework\db\schema\CDbCommandBuilder.php:392
+Stack trace:
+#0 D:\AppServ\www\ygjnh\framework\db\ar\CActiveRecord.php(1747): CDbCommandBuilder->createUpdateCommand(Object(CMysqlTableSchema), Array, Object(CDbCriteria))
+#1 D:\AppServ\www\ygjnh\framework\db\ar\CActiveRecord.php(1124): CActiveRecord->updateByPk(NULL, Array)
+#2 D:\AppServ\www\ygjnh\framework\db\ar\CActiveRecord.php(806): CActiveRecord->update(NULL)
+#3 D:\AppServ\www\ygjnh\protected\models\Actionlog.php(64): CActiveRecord->save()
+#4 D:\AppServ\www\ygjnh\protected\models\Manager.php(110): Actionlog->saveLog('????????????', 'demo')
+#5 D:\AppServ\www\ygjnh\protected\components\UserIdentity.php(23): Manager->safeLogin('demo', 'dfaf')
+#6 D:\AppServ\www\ygjnh\protected\models\Manager.php(90): UserIdentity->authenticate()
+#7 D:\AppServ\www\ygjnh\protected\controllers\SiteController.php(85): Manager->login()
+#8 D:\AppServ\www\ygjnh\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#9 D:\AppServ\www\ygjnh\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 D:\AppServ\www\ygjnh\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 D:\AppServ\www\ygjnh\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(282): CController->run('login')
+#13 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#14 D:\AppServ\www\ygjnh\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 D:\AppServ\www\ygjnh\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/index.php/site/login
+HTTP_REFERER=http://www.yii.com/index.php/site/login
+---
+2014/05/20 06:30:19 [warning] [application] Failed to set unsafe attribute "action" of "Actionlog".
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (62)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (110)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:30:19 [warning] [application] Failed to set unsafe attribute "userName" of "Actionlog".
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (62)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (110)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:30:19 [warning] [application] Failed to set unsafe attribute "logDate" of "Actionlog".
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (62)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (110)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:30:19 [warning] [application] Failed to set unsafe attribute "userId" of "Actionlog".
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (62)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (110)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:30:28 [warning] [application] Failed to set unsafe attribute "action" of "Actionlog".
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (62)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (110)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:30:28 [warning] [application] Failed to set unsafe attribute "userName" of "Actionlog".
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (62)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (110)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:30:28 [warning] [application] Failed to set unsafe attribute "logDate" of "Actionlog".
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (62)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (110)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:30:28 [warning] [application] Failed to set unsafe attribute "userId" of "Actionlog".
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (62)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (110)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:35:05 [error] [php] Missing argument 1 for CWebUser::getState(), called in D:\AppServ\www\ygjnh\protected\models\Actionlog.php on line 57 and defined (D:\AppServ\www\ygjnh\framework\web\auth\CWebUser.php:572)
+Stack trace:
+#0 D:\AppServ\www\ygjnh\protected\components\UserIdentity.php(23): Manager->safeLogin()
+#1 D:\AppServ\www\ygjnh\protected\models\Manager.php(90): UserIdentity->authenticate()
+#2 D:\AppServ\www\ygjnh\protected\controllers\SiteController.php(85): Manager->login()
+#3 D:\AppServ\www\ygjnh\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#4 D:\AppServ\www\ygjnh\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\AppServ\www\ygjnh\framework\web\CController.php(286): SiteController->runAction()
+#6 D:\AppServ\www\ygjnh\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(282): SiteController->run()
+#8 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\AppServ\www\ygjnh\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\AppServ\www\ygjnh\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/site/login
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (57)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (134)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:37:14 [error] [exception.CException] exception 'CException' with message 'Property "CWebUser.userName" is not defined.' in D:\AppServ\www\ygjnh\framework\base\CComponent.php:130
+Stack trace:
+#0 D:\AppServ\www\ygjnh\framework\web\auth\CWebUser.php(146): CComponent->__get('userName')
+#1 D:\AppServ\www\ygjnh\protected\models\Actionlog.php(57): CWebUser->__get('userName')
+#2 D:\AppServ\www\ygjnh\protected\models\Manager.php(134): Actionlog->saveLog('????????????', 'demo')
+#3 D:\AppServ\www\ygjnh\protected\components\UserIdentity.php(23): Manager->safeLogin('demo', 'demo')
+#4 D:\AppServ\www\ygjnh\protected\models\Manager.php(90): UserIdentity->authenticate()
+#5 D:\AppServ\www\ygjnh\protected\controllers\SiteController.php(85): Manager->login()
+#6 D:\AppServ\www\ygjnh\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#7 D:\AppServ\www\ygjnh\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 D:\AppServ\www\ygjnh\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 D:\AppServ\www\ygjnh\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(282): CController->run('login')
+#11 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#12 D:\AppServ\www\ygjnh\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 D:\AppServ\www\ygjnh\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/index.php/site/login
+HTTP_REFERER=http://www.yii.com/index.php/site/login
+---
+2014/05/20 06:41:52 [error] [php] Missing argument 1 for CWebUser::getState(), called in D:\AppServ\www\ygjnh\protected\models\Actionlog.php on line 57 and defined (D:\AppServ\www\ygjnh\framework\web\auth\CWebUser.php:572)
+Stack trace:
+#0 D:\AppServ\www\ygjnh\protected\components\UserIdentity.php(23): Manager->safeLogin()
+#1 D:\AppServ\www\ygjnh\protected\models\Manager.php(90): UserIdentity->authenticate()
+#2 D:\AppServ\www\ygjnh\protected\controllers\SiteController.php(85): Manager->login()
+#3 D:\AppServ\www\ygjnh\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#4 D:\AppServ\www\ygjnh\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\AppServ\www\ygjnh\framework\web\CController.php(286): SiteController->runAction()
+#6 D:\AppServ\www\ygjnh\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(282): SiteController->run()
+#8 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\AppServ\www\ygjnh\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\AppServ\www\ygjnh\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/site/login
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (57)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (134)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:44:34 [error] [php] Missing argument 1 for CWebUser::getState(), called in D:\AppServ\www\ygjnh\protected\models\Actionlog.php on line 57 and defined (D:\AppServ\www\ygjnh\framework\web\auth\CWebUser.php:572)
+Stack trace:
+#0 D:\AppServ\www\ygjnh\protected\components\UserIdentity.php(23): Manager->safeLogin()
+#1 D:\AppServ\www\ygjnh\protected\models\Manager.php(90): UserIdentity->authenticate()
+#2 D:\AppServ\www\ygjnh\protected\controllers\SiteController.php(85): Manager->login()
+#3 D:\AppServ\www\ygjnh\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#4 D:\AppServ\www\ygjnh\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\AppServ\www\ygjnh\framework\web\CController.php(286): SiteController->runAction()
+#6 D:\AppServ\www\ygjnh\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(282): SiteController->run()
+#8 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\AppServ\www\ygjnh\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\AppServ\www\ygjnh\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/site/login
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (57)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (135)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:44:45 [error] [php] Missing argument 1 for CWebUser::getState(), called in D:\AppServ\www\ygjnh\protected\models\Manager.php on line 117 and defined (D:\AppServ\www\ygjnh\framework\web\auth\CWebUser.php:572)
+Stack trace:
+#0 D:\AppServ\www\ygjnh\protected\models\Manager.php(90): UserIdentity->authenticate()
+#1 D:\AppServ\www\ygjnh\protected\controllers\SiteController.php(85): Manager->login()
+#2 D:\AppServ\www\ygjnh\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#3 D:\AppServ\www\ygjnh\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 D:\AppServ\www\ygjnh\framework\web\CController.php(286): SiteController->runAction()
+#5 D:\AppServ\www\ygjnh\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#6 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(282): SiteController->run()
+#7 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 D:\AppServ\www\ygjnh\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 D:\AppServ\www\ygjnh\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/site/login
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (117)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (90)
+2014/05/20 06:44:58 [error] [php] Missing argument 1 for CWebUser::getState(), called in D:\AppServ\www\ygjnh\protected\models\Actionlog.php on line 57 and defined (D:\AppServ\www\ygjnh\framework\web\auth\CWebUser.php:572)
+Stack trace:
+#0 D:\AppServ\www\ygjnh\protected\components\UserIdentity.php(23): Manager->safeLogin()
+#1 D:\AppServ\www\ygjnh\protected\models\Manager.php(90): UserIdentity->authenticate()
+#2 D:\AppServ\www\ygjnh\protected\controllers\SiteController.php(85): Manager->login()
+#3 D:\AppServ\www\ygjnh\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#4 D:\AppServ\www\ygjnh\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\AppServ\www\ygjnh\framework\web\CController.php(286): SiteController->runAction()
+#6 D:\AppServ\www\ygjnh\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(282): SiteController->run()
+#8 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\AppServ\www\ygjnh\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\AppServ\www\ygjnh\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/site/login
+in D:\AppServ\www\ygjnh\protected\models\Actionlog.php (57)
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (135)
+in D:\AppServ\www\ygjnh\protected\components\UserIdentity.php (23)
+2014/05/20 06:46:37 [error] [php] session_regenerate_id() [<a href='function.session-regenerate-id'>function.session-regenerate-id</a>]: Cannot regenerate session id - headers already sent (D:\AppServ\www\ygjnh\framework\web\CHttpSession.php:181)
+Stack trace:
+#0 D:\AppServ\www\ygjnh\framework\web\auth\CWebUser.php(233): CWebUser->changeIdentity()
+#1 D:\AppServ\www\ygjnh\protected\models\Manager.php(97): CWebUser->login()
+#2 D:\AppServ\www\ygjnh\protected\controllers\SiteController.php(85): Manager->login()
+#3 D:\AppServ\www\ygjnh\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#4 D:\AppServ\www\ygjnh\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 D:\AppServ\www\ygjnh\framework\web\CController.php(286): SiteController->runAction()
+#6 D:\AppServ\www\ygjnh\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(282): SiteController->run()
+#8 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 D:\AppServ\www\ygjnh\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\AppServ\www\ygjnh\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php/site/login
+in D:\AppServ\www\ygjnh\protected\models\Manager.php (97)
+in D:\AppServ\www\ygjnh\protected\controllers\SiteController.php (85)
+in D:\AppServ\www\ygjnh\index.php (13)
+2014/05/20 07:16:39 [error] [exception.CException] exception 'CException' with message 'Property "CWebApplication.getsession" is not defined.' in D:\AppServ\www\ygjnh\framework\base\CComponent.php:130
+Stack trace:
+#0 D:\AppServ\www\ygjnh\framework\base\CModule.php(105): CComponent->__get('getsession')
+#1 D:\AppServ\www\ygjnh\protected\components\BaseController.php(18): CModule->__get('getsession')
+#2 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(281): BaseController->init()
+#3 D:\AppServ\www\ygjnh\framework\web\CWebApplication.php(141): CWebApplication->runController('member/index')
+#4 D:\AppServ\www\ygjnh\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 D:\AppServ\www\ygjnh\index.php(13): CApplication->run()
+#6 {main}
+REQUEST_URI=/index.php/member/index
+HTTP_REFERER=http://www.yii.com/index.php/site/login
+---

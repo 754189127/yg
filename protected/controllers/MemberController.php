@@ -1,6 +1,6 @@
 <?php
 
-class MemberController extends Controller
+class MemberController extends BaseController
 {
 	public $layout='//layouts/column2';
 
