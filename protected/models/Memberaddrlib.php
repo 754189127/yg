@@ -70,44 +70,44 @@ class Memberaddrlib extends CActiveRecord
 		);
 	}
 
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 *
-	 * Typical usecase:
-	 * - Initialize the model fields with values from filter form.
-	 * - Execute this method to get CActiveDataProvider instance which will filter
-	 * models according to data in model fields.
-	 * - Pass data provider to CGridView, CListView or any similar widget.
-	 *
-	 * @return CActiveDataProvider the data provider that can return the models
-	 * based on the search/filter conditions.
-	 */
-	public function search()
-	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
 
-		$criteria=new CDbCriteria;
+    /**
+     * 获取用户地址
+     * @param $condition
+     * @param int $number
+     */
+    public function getMemberAddr($condition,$number=2)
+    {
+        $conStr = '1=1';
+        if($condition['memberId']){
+            $conStr .=' and memberId='.$condition['memberId'];
+        }
+        if($condition['address']){
+            $conStr .= ' and address like "%'.$condition['address'].'%"';
+        }
+        if($condition['mobile']){
+            $conStr .= ' and mobile like "%'.$condition['mobile'].'%"';
+        }
+        if($condition['zipCode']){
+            $conStr .= ' and zipCode like "%'.$condition['zipCode'].'%"';
+        }
+        $criteria = new CDbCriteria();
+        $criteria->select = '*';
+        $criteria->addCondition($conStr);
+        $criteria->order='isDefault desc,id asc';
+        $criteria->limit=$number;
+        $data = Memberaddrlib::model()->findAll($criteria);
+        return $data;
+    }
 
-		$criteria->compare('id',$this->id,true);
-		$criteria->compare('memberId',$this->memberId);
-		$criteria->compare('type',$this->type);
-		$criteria->compare('address',$this->address,true);
-		$criteria->compare('zipCode',$this->zipCode,true);
-		$criteria->compare('mobile',$this->mobile,true);
-		$criteria->compare('consignee',$this->consignee,true);
-		$criteria->compare('isDefault',$this->isDefault);
+    public function getListByMemberId($memberId){
+        $criteria = new CDbCriteria();
+        $criteria->addCondition('memberId='.$memberId);
+        $criteria->order='isDefault desc,id asc';
+        $data = Memberaddrlib::model()->findAll($criteria);
+        return $data;
+    }
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
-	}
-
-	/**
-	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your CActiveRecord descendants!
-	 * @param string $className active record class name.
-	 * @return Memberaddrlib the static model class
-	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);

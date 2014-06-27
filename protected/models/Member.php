@@ -59,7 +59,59 @@ class Member extends CActiveRecord
 		);
 	}
 
+    /**
+     * 获取会员
+     */
+    public function getMembers($condition=array())
+    {
+        $conStr = '1=1';
+        if($condition['userCode']){
+            $conStr .= ' and userCode like "%'.$condition['userCode'].'%"';
+        }
+        if($condition['realName']){
+            $conStr .= ' and realName like "%'.$condition['realName'].'%"';
+        }
+        if($condition['source']){
+            $conStr .= ' and source like ='.$condition['source'];
+        }
+        $criteria = new CDbCriteria();
+        $criteria->select = 'id,userCode,realName,status';
+        $criteria->addCondition($conStr);
+        $criteria->order='id desc';
+        $items = Member::model()->findAll($criteria);
+        $data = array();
+        if($items){
+            foreach($items as $k=>$val){
+                $condition['memberId'] = $val['id'];
+                $addrList =Memberaddrlib::model()->getMemberAddr($condition,2);
+                if(($condition['address'] || $condition['mobile'] || $condition['zipCode']) && !$addrList){
+                    unset($data[$k]);
+                }else{
+                    $data[$k]['addrList'] = $addrList;
+                    $data[$k]['id'] = $val['id'];
+                    $data[$k]['userCode'] = $val['userCode'];
+                    $data[$k]['realName'] = $val['realName'];
+                    $data[$k]['status'] = $val['status'];
+                }
+            }
+        }
+        return $data;
+    }
 
+
+    public function saveMember($data){
+        $model = new Member();
+        $model->periodicalId = $data['periodicalId'];
+        $model->userCode = date(YmdHis);
+        $model->realName = $data['realName'];
+        $model->source = $data['source'];
+        $model->sex = $data['sex']?$data['sex']:1;
+        $model->birth = $data['birth'];
+        $model->status = $data['status']?$data['status']:1;
+        $model->isAgent = $data['isAgent'];
+        $model->addDate = time();
+        return $model->save();
+    }
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!

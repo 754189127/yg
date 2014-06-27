@@ -1,5 +1,4 @@
 <?php
-
 class SiteController extends Controller
 {
 	/**
@@ -78,20 +77,52 @@ class SiteController extends Controller
 	public function actionLogin()
 	{
         $model=new Manager('login');
-        if(isset($_POST['Manager']))
+        if(isset($_POST['username']) && isset($_POST['password']))
         {
-            $model->attributes=$_POST['Manager'];
+            $post['username'] = trim($_POST['username']);
+            $post['password'] = trim($_POST['password']);
+
+            $model->attributes = $post;
             if($model->validate()){
                 $result =  $model->login();
+                $msg = array('success'=>false,'errors'=>array('msg'=>'登录账号或密码有误'));
                 if($result){
-                    $this->redirect( $this->createUrl('member/index'));
-                }else{
-                    $model->addError('password','登录账号或密码有误');
+                    $msg = array('success'=>true,'msg'=>'');
+                    //$this->redirect( $this->createUrl('member/index'));
                 }
+                exit(CJSON::encode($msg));
             }
         }
         $this->render('login',array('model'=>$model));
 	}
+
+    /**
+     * 检测是否登录
+     */
+    public function actionIslogin(){
+       $msg = array('success'=>false,'errors'=>array('msg'=>'未登录'));
+       if( Yii::app()->user->getState('userId') ){
+           $msg = array('success'=>true,'msg'=>'');
+       }
+        echo(CJSON::encode($msg));
+    }
+    /**
+     * 修改用户登录密码
+     */
+    public function actionUpdate()
+    {
+        $newPassword = $_POST['password']?trim($_POST['password']):'';
+        if($newPassword){
+            exit('-1');
+        }
+        $userId = Yii::app()->user->getState('userId');
+        $model = $this->loadModel($userId);
+        $model->PASSWORD = md5($newPassword);
+        if ($model->save())
+            exit(1);
+        else
+            exit(0);
+    }
 
 	/**
 	 * Logs out the current user and redirect to homepage.

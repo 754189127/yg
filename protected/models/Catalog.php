@@ -57,12 +57,11 @@ class Catalog extends CActiveRecord
 
     public function getList($number=0)
     {
-        $conStr = '1=1';
         $criteria = new CDbCriteria();
-        $criteria->addCondition($conStr);
         $criteria->order='id desc';
-        if($number)
-        $criteria->limit=$number;
+        if($number){
+            $criteria->limit=$number;
+        }
         $data = Catalog::model()->findAll($criteria);
         return $data;
     }
