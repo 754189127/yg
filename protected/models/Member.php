@@ -4,10 +4,6 @@
  * This is the model class for table "{{member}}".
  *
  * The followings are the available columns in table '{{member}}':
- * @property integer $id
- * @property string $userCode
- * @property string $password
- * @property string $email
  */
 class Member extends CActiveRecord
 {
@@ -27,11 +23,8 @@ class Member extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('userCode, password, email', 'required'),
-			array('userCode, password, email', 'length', 'max'=>128),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, userCode, password, email', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,10 +45,7 @@ class Member extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'userCode' => 'userCode',
-			'password' => 'Password',
-			'email' => 'Email',
+
 		);
 	}
 
@@ -87,29 +77,64 @@ class Member extends CActiveRecord
                 if(($condition['address'] || $condition['mobile'] || $condition['zipCode']) && !$addrList){
                     unset($data[$k]);
                 }else{
-                    $data[$k]['addrList'] = $addrList;
                     $data[$k]['id'] = $val['id'];
                     $data[$k]['userCode'] = $val['userCode'];
                     $data[$k]['realName'] = $val['realName'];
                     $data[$k]['status'] = $val['status'];
+                    if(count($addrList)==1){
+                        $data[$k]['address1'] = $addrList[0]['address'];
+                        $data[$k]['address2'] = '';
+                    }elseif(count($addrList)>1){
+                        $data[$k]['address1'] = $addrList[0]['address'];
+                        $data[$k]['address2'] = $addrList[1]['address'];
+                    }else{
+                        $data[$k]['address1'] = '';
+                        $data[$k]['address2'] = '';
+                    }
                 }
             }
         }
         return $data;
     }
 
+    public function getMemberById($memberId){
+        $data = Member::model()->findByPk($memberId);
+        if($data){
+            $data['birth'] = $data['birth']?date('Y-m-d',$data['birth']):'';
+            $data['graduateDate'] = $data['graduateDate']?date('Y-m-d',$data['graduateDate']):'';
+            $data['addDate'] = $data['addDate']?date('Y-m-d',$data['addDate']):'';
+        }
+        return $data;
+    }
 
     public function saveMember($data){
         $model = new Member();
-        $model->periodicalId = $data['periodicalId'];
-        $model->userCode = date(YmdHis);
+        $model->periodicalId = isset($data['periodicalId'])?$data['periodicalId']:1;
+        $model->userCode = date('YmdHis');
         $model->realName = $data['realName'];
-        $model->source = $data['source'];
-        $model->sex = $data['sex']?$data['sex']:1;
-        $model->birth = $data['birth'];
-        $model->status = $data['status']?$data['status']:1;
-        $model->isAgent = $data['isAgent'];
+        $model->source = isset($data['source'])?$data['source']:1;
+        $model->sex = isset($data['sex'])?$data['sex']:1;
+        $model->birth =  isset($data['birth'])?$data['birth']:0;
+        $model->status = isset($data['status'])?$data['status']:1;
+        $model->isAgent = isset($data['isAgent'])?$data['isAgent']:0;
         $model->addDate = time();
+        return $model->save();
+    }
+
+    /*
+     * 修改会员
+     */
+    public function updateMember($data){
+        if(!$data['id']) return false;
+        $model = Member::model()->findByPk($data['id']);
+        $model->periodicalId = isset($data['periodicalId'])?$data['periodicalId']:1;
+        $model->userCode = date('YmdHis');
+        $model->realName = $data['realName'];
+        $model->source = isset($data['source'])?$data['source']:1;
+        $model->sex = isset($data['sex'])?$data['sex']:1;
+        $model->birth =  isset($data['birth'])?$data['birth']:0;
+        $model->status = isset($data['status'])?$data['status']:1;
+        $model->isAgent = isset($data['isAgent'])?$data['isAgent']:0;
         return $model->save();
     }
 	/**

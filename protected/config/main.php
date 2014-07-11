@@ -39,6 +39,7 @@ return array(
 		// uncomment the following to enable URLs in path-format
 		'urlManager'=>array(
 			'urlFormat'=>'path',
+            'showScriptName'=>true,
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
@@ -52,10 +53,10 @@ return array(
 		*/
 		// uncomment the following to use a MySQL database
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=jnh',
+			'connectionString' => 'mysql:host=jnh.www.webwei.cn;dbname=jnh',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => 'root',
+			'username' => 'jnh',
+			'password' => '57075F5997a008',
 			'charset' => 'utf8',
 			'tablePrefix'=>'tb_',
 		),

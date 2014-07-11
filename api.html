@@ -1,0 +1,263 @@
+<?php /* @var $this Controller */ ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>接口说明</title>
+</head>
+<body>
+<p>登录接口</p>
+<table width="1030" border="1" cellpadding="0" cellspacing="0">
+
+    <tr>
+        <td width="107" height="30" bgcolor="#FFFFFF">URL地址</td>
+        <td width="917" height="30" bgcolor="#FFFFFF">site/login</td>
+    </tr>
+    <tr>
+        <td height="30" bgcolor="#FFFFFF">接收参数</td>
+        <td height="30" bgcolor="#FFFFFF">username，password</td>
+    </tr>
+     <tr>
+        <td height="30" bgcolor="#FFFFFF">返回结果</td>
+        <td height="30" bgcolor="#FFFFFF">1-成功，0-登录账号或密码有误</td>
+    </tr>
+</table>
+
+<p>退出接口</p>
+<table width="1030" border="1" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="107" height="30" bgcolor="#FFFFFF">URL地址</td>
+    <td width="917" height="30" bgcolor="#FFFFFF">site/logout</td>
+  </tr>
+</table>
+
+<p>验证是否登录</p>
+<table width="1030" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="107" height="30" bgcolor="#FFFFFF">URL地址</td>
+        <td width="917" height="30" bgcolor="#FFFFFF">site/islogin</td>
+    </tr>
+    <tr>
+        <td height="30" bgcolor="#FFFFFF">返回结果</td>
+        <td height="30" bgcolor="#FFFFFF">1:已登录，0：未登录</td>
+    </tr>
+</table>
+<p>修改密码</p>
+<table width="1030" border="1" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="107" height="30" bgcolor="#FFFFFF">URL地址</td>
+    <td width="917" height="30" bgcolor="#FFFFFF">site/update</td>
+  </tr>
+  <tr>
+        <td height="30" bgcolor="#FFFFFF">接收参数</td>
+        <td height="30" bgcolor="#FFFFFF">password 新密码</td>
+    </tr>
+     <tr>
+        <td height="30" bgcolor="#FFFFFF">返回结果</td>
+        <td height="30" bgcolor="#FFFFFF">-1:密码为空，1:修改成功，0：修改失败</td>
+    </tr>
+</table>
+
+<p>会员管理接口</p>
+<table width="1030" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="107" height="30" bgcolor="#FFFFFF">URL地址</td>
+        <td width="917" height="30" bgcolor="#FFFFFF">member/index</td>
+    </tr>
+    <tr>
+        <td height="30" bgcolor="#FFFFFF">接收参数</td>
+        <td height="30" bgcolor="#FFFFFF">检索条件待定</td>
+    </tr>
+	 <tr>
+        <td height="30" bgcolor="#FFFFFF">返回结果</td>
+        <td height="30" bgcolor="#FFFFFF">JSON格式数据</td>
+    </tr>
+</table>
+
+
+<p>添加会员信息</p>
+<table width="1030" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="107" height="30" bgcolor="#FFFFFF">URL地址</td>
+        <td width="917" height="30" bgcolor="#FFFFFF">member/create</td>
+    </tr>
+    <tr>
+        <td height="30" bgcolor="#FFFFFF">接收参数</td>
+        <td height="30" bgcolor="#FFFFFF"></td>
+    </tr>
+	 <tr>
+        <td height="30" bgcolor="#FFFFFF">返回结果</td>
+        <td height="30" bgcolor="#FFFFFF">1：成功，0：失败</td>
+    </tr>
+</table>
+
+
+<p>修改会员信息</p>
+<table width="1030" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="107" height="30" bgcolor="#FFFFFF">URL地址</td>
+        <td width="917" height="30" bgcolor="#FFFFFF">member/update</td>
+    </tr>
+    <tr>
+        <td height="30" bgcolor="#FFFFFF">接收参数</td>
+        <td height="30" bgcolor="#FFFFFF"></td>
+    </tr>
+	 <tr>
+        <td height="30" bgcolor="#FFFFFF">返回结果</td>
+        <td height="30" bgcolor="#FFFFFF">1：成功，0：失败</td>
+    </tr>
+</table>
+<p>会员来电记录</p>
+<table width="1030" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="107" height="30" bgcolor="#FFFFFF">URL地址</td>
+        <td width="917" height="30" bgcolor="#FFFFFF">member/incomingtelegram</td>
+    </tr>
+    <tr>
+        <td height="30" bgcolor="#FFFFFF">接收参数</td>
+        <td height="30" bgcolor="#FFFFFF">memberId</td>
+    </tr>
+</table> 
+    
+
+<p>获取某会员购买作业流程记录</p>
+<table width="1030" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="107" height="30" bgcolor="#FFFFFF">URL地址</td>
+        <td width="917" height="30" bgcolor="#FFFFFF">member/orderremittance</td>
+    </tr>
+    <tr>
+        <td height="30" bgcolor="#FFFFFF">接收参数</td>
+        <td height="30" bgcolor="#FFFFFF">memberId</td>
+    </tr>
+    <tr>
+        <td height="30" bgcolor="#FFFFFF">返回结果</td>
+        <td height="30" bgcolor="#FFFFFF">json</td>
+    </tr>
+</table>
+
+
+<p>会员购买作业流程记录列表/添加/修改/删除/查看</p>
+<table width="1030" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="107" height="30" bgcolor="#FFFFFF">URL地址</td>
+        <td width="917" height="30" bgcolor="#FFFFFF">orderremittance/index    orderremittance/create   orderremittance/update    orderremittance/delete  orderremittance/view</td>
+    </tr>
+    <tr>
+        <td height="30" bgcolor="#FFFFFF">接收参数</td>
+        <td height="30" bgcolor="#FFFFFF">id</td>
+    </tr>
+    <tr>
+        <td height="30" bgcolor="#FFFFFF">返回结果</td>
+        <td height="30" bgcolor="#FFFFFF">json</td>
+    </tr>
+</table>
+
+
+<p>期数列表/添加/编辑/删除/查看</p>
+<table width="1030" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="107" height="30" bgcolor="#FFFFFF">URL地址</td>
+        <td width="917" height="30" bgcolor="#FFFFFF">periodical/index  periodical/create    periodical/update   periodical/delete  periodical/view</td>
+    </tr>
+  
+    <tr>
+        <td height="30" bgcolor="#FFFFFF">返回结果</td>
+        <td height="30" bgcolor="#FFFFFF">json</td>
+    </tr>
+</table>
+
+
+
+<p>获取厂商列表</p>
+<table width="1030" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="107" height="30" bgcolor="#FFFFFF">URL地址</td>
+        <td width="917" height="30" bgcolor="#FFFFFF">company/index</td>
+    </tr>
+    <tr>
+        <td height="30" bgcolor="#FFFFFF">接收参数</td>
+        <td height="30" bgcolor="#FFFFFF"></td>
+    </tr>
+    <tr>
+        <td height="30" bgcolor="#FFFFFF">返回结果</td>
+        <td height="30" bgcolor="#FFFFFF">json</td>
+    </tr>
+</table>
+
+
+<p>添加厂商</p>
+<table width="1030" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="107" height="30" bgcolor="#FFFFFF">URL地址</td>
+        <td width="917" height="30" bgcolor="#FFFFFF">company/create</td>
+    </tr>
+    <tr>
+        <td height="30" bgcolor="#FFFFFF">返回结果</td>
+        <td height="30" bgcolor="#FFFFFF">1-成功，0-失败</td>
+    </tr>
+</table>
+
+<p>编辑厂商</p>
+<table width="1030" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="107" height="30" bgcolor="#FFFFFF">URL地址</td>
+        <td width="917" height="30" bgcolor="#FFFFFF">company/update</td>
+    </tr>
+    <tr>
+        <td height="30" bgcolor="#FFFFFF">返回结果</td>
+        <td height="30" bgcolor="#FFFFFF">1-成功，0-失败</td>
+    </tr>
+</table>
+
+<p>添加进货单</p>
+<table width="1030" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="107" height="30" bgcolor="#FFFFFF">URL地址</td>
+        <td width="917" height="30" bgcolor="#FFFFFF">receipt/create</td>
+    </tr>
+    <tr>
+        <td height="30" bgcolor="#FFFFFF">返回结果</td>
+        <td height="30" bgcolor="#FFFFFF">1-成功，0-失败</td>
+    </tr>
+</table>
+
+<p>进货单列表</p>
+<table width="1030" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="107" height="30" bgcolor="#FFFFFF">URL地址</td>
+        <td width="917" height="30" bgcolor="#FFFFFF">receipt/create</td>
+    </tr>
+    <tr>
+        <td height="30" bgcolor="#FFFFFF">接收参数</td>
+        <td height="30" bgcolor="#FFFFFF">companyId</td>
+    </tr>
+</table>
+
+<p>产品库存列表</p>
+<table width="1030" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="107" height="30" bgcolor="#FFFFFF">URL地址</td>
+        <td width="917" height="30" bgcolor="#FFFFFF">product/index</td>
+    </tr>
+
+</table>
+ 
+<p>目录列表/添加/修改/删除</p>
+<table width="1030" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="107" height="30" bgcolor="#FFFFFF">URL地址</td>
+        <td width="917" height="30" bgcolor="#FFFFFF">catalog/index    catalog/create   catalog/update   catalog/delete</td>
+    </tr>
+</table>
+
+
+<p>目录发放列表/添加/修改/删除</p>
+<table width="1030" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="107" height="30" bgcolor="#FFFFFF">URL地址</td>
+        <td width="917" height="30" bgcolor="#FFFFFF">catalog/index    catalog/create   catalog/update   catalog/delete</td>
+    </tr>
+</table>
+</body>
+</html>

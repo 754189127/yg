@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * 目录
+ * Class CatalogController
+ */
 class CatalogController extends Controller
 {
     public $layout = '//layouts/column2';
@@ -19,39 +23,43 @@ class CatalogController extends Controller
 
     }
 
-
-
     public function actionCreate()
     {
-        $model = new Member;
-        if (isset($_POST['Member'])) {
-            $model->attributes = $_POST['Member'];
-            if ($model->save())
-                exit(1);
-            else
-                exit(0);
+        $model = new Catalog();
+        if (isset($_POST)) {
+            if ($model->saveData($_POST)){
+                $msg = array('success'=>true,'msg'=>'添加成功');
+            }else{
+                $msg = array('success'=>false,'msg'=>'添加失败');
+            }
+            exit(CJSON::encode($msg));
         }
     }
 
-    public function actionUpdate($id)
+    public function actionUpdate()
     {
-        $model = $this->loadModel($id);
-        if (isset($_POST['Member'])) {
-            $model->attributes = $_POST['Member'];
-            if ($model->save())
-                exit(1);
-            else
-                exit(0);
+        $model = new Catalog();
+        if (isset($_POST)) {
+            if ($model->saveData($_POST)){
+                $msg = array('success'=>true,'msg'=>'修改成功');
+            }else{
+                $msg = array('success'=>false,'msg'=>'修改失败');
+            }
+            exit(CJSON::encode($msg));
         }
     }
 
 
-    public function actionDelete($id)
+    public function actionDelete()
     {
-        if ($this->loadModel($id)->delete())
-            exit(1);
-        else
-            exit(0);
+        $model = new Catalog();
+        $id = $_POST['id'];
+        if ($model->deleteData($id)){
+            $msg = array('success'=>true,'msg'=>'删除成功');
+        }else{
+            $msg = array('success'=>false,'msg'=>'删除失败');
+        }
+        exit(CJSON::encode($msg));
     }
 
 

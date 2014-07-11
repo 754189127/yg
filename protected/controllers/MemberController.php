@@ -1,9 +1,16 @@
 <?php
 
-class MemberController extends Controller
+/**
+ * 会员
+ * Class MemberController
+ */
+class MemberController extends BaseController
 {
     public $layout = '//layouts/column2';
 
+    public function init(){
+        parent::init();
+    }
     public function actionIndex()
     {
         $condition = array(
@@ -36,6 +43,16 @@ class MemberController extends Controller
     }
 
     /*
+     * 电话订购
+     */
+      public function actionIncomingtelegram(){
+          $memberId = isset($_POST['memberId'])?intval($_POST['memberId']):0;
+          $model = new Incomingtelegram();
+          $list = $model->getList($memberId);
+          echo CJSON::encode(array('list'=>$list));
+      }
+
+    /*
      * 汇款订购记录
      */
     public function actionOrderremittance(){
@@ -66,38 +83,61 @@ class MemberController extends Controller
         $model = new Member();
         if ($_POST) {
             $post = $_POST;
-            if ($model->saveMember($post))
-                exit(1);
-            else
-                exit(0);
+            if($post['realName']==''){
+                $msg = array('success'=>false,'msg'=>'会员姓名不能为空');
+                exit(CJSON::encode($msg));
+            }
+            if($post['zipCode']==''){
+                $msg = array('success'=>false,'msg'=>'邮编不能为空');
+                exit(CJSON::encode($msg));
+            }
+            if ($model->saveMember($post)){
+                $msg = array('success'=>true,'msg'=>'会员添加成功');
+            }else{
+                $msg = array('success'=>false,'msg'=>'数据保存失败');
+            }
+            exit(CJSON::encode($msg));
         }
     }
 
-    public function actionUpdate($id)
+    public function actionUpdate()
     {
-        $model = $this->loadModel($id);
-        if (isset($_POST['Member'])) {
-            $model->attributes = $_POST['Member'];
-            if ($model->save())
-                exit(1);
-            else
-                exit(0);
+        $model = new Member();
+        if ($_POST) {
+            $post = $_POST;
+            if($post['realName']==''){
+                $msg = array('success'=>false,'msg'=>'会员姓名不能为空');
+                exit(CJSON::encode($msg));
+            }
+            if($post['zipCode']==''){
+                $msg = array('success'=>false,'msg'=>'邮编不能为空');
+                exit(CJSON::encode($msg));
+            }
+            if ($model->updateMember($post)){
+                $msg = array('success'=>true,'msg'=>'会员修改成功');
+            }else{
+                $msg = array('success'=>false,'msg'=>'数据修改失败');
+            }
+            exit(CJSON::encode($msg));
         }
     }
 
 
     public function actionDelete($id)
     {
-        if ($this->loadModel($id)->delete())
-            exit(1);
-        else
-            exit(0);
+        $model = new Member();
+        if ($model->deleteByPk($id)){
+            $msg = array('success'=>true,'msg'=>'会员删除成功');
+        }else{
+            $msg = array('success'=>false,'msg'=>'数据删除失败');
+        }
+        exit(CJSON::encode($msg));
     }
 
 
     public function loadModel($id)
     {
-        $model = Member::model()->findByPk($id);
+        $model = Member::model()->getMemberById($id);
         if ($model === null)
             throw new CHttpException(404, 'The requested page does not exist.');
         return $model;

@@ -12,6 +12,7 @@ class BaseController extends Controller{
         protected $userName;
         protected $realName;
         protected $permission;
+        protected $_setting;
 
         public function init(){
             parent::init();
@@ -22,5 +23,8 @@ class BaseController extends Controller{
             if(empty($this->userId)){
                 exit('未登录');
             }
+
+            $this->_setting=require_once('/protected/config/setting.php');
+
         }
 } 

@@ -65,12 +65,29 @@ class Catalog extends CActiveRecord
         $data = Catalog::model()->findAll($criteria);
         return $data;
     }
-    /**
-     * Returns the static model of the specified AR class.
-     * Please note that you should have this exact method in all your CActiveRecord descendants!
-     * @param string $className active record class name.
-     * @return Memberaddrlib the static model class
-     */
+    public function saveData($data){
+        $model = new Catalog();
+        if(isset($data['id'])){
+            $model =  Catalog::model()->findByPk($data['id']);
+        }else{
+            $model->catalogCode = date('YmdHis');
+            $model->addDate = time();
+        }
+        $model->catalogDate = isset($data['catalogDate'])?$data['catalogDate']:0;
+        $model->number = isset($data['number'])?$data['number']:0;
+        $model->totalAmount = isset($data['totalAmount'])?$data['totalAmount']:0;
+        $model->price = isset($data['price'])?$data['price']:0;
+        $model->makeCompany = isset($data['makeCompany'])?$data['makeCompany']:'';
+        $model->linkMan = isset($data['linkMan'])?$data['linkMan']:'';
+        $model->mobile = isset($data['mobile'])?$data['mobile']:'';
+        $model->address = isset($data['address'])?$data['address']:'';
+        $model->remark = isset($data['remark'])?$data['remark']:'';
+        return $model->save();
+    }
+
+    public function deleteData(){
+
+    }
     public static function model($className=__CLASS__)
     {
         return parent::model($className);
