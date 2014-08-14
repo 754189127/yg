@@ -1,6 +1,6 @@
 <?php
 /**
- * 购物流程
+ * 汇款订购
  * Created by PhpStorm.
  * User: kevin
  * Date: 14-7-2
@@ -17,9 +17,12 @@ class OrderremittanceController extends BaseController{
     {
         $condition = array(
             'periodicalId'=>isset($_POST['periodicalId'])?trim($_POST['periodicalId']):0,
-            'companyCode'=>isset($_POST['companyCode'])?trim($_POST['companyCode']):'',
+            'billNumber'=>isset($_POST['billNumber'])?trim($_POST['billNumber']):'',
+            'userCode'=>isset($_POST['userCode'])?trim($_POST['userCode']):'',
+            'userName'=>isset($_POST['userName'])?trim($_POST['userName']):'',
             'address'=>isset($_POST['address'])?trim($_POST['address']):'',
-            'productCode'=>isset($_POST['productCode'])?trim($_POST['productCode']):''
+            'zipCode'=>isset($_POST['zipCode'])?trim($_POST['zipCode']):'',
+            'paymentMethord'=>isset($_POST['paymentMethord'])?trim($_POST['paymentMethord']):''
         );
         $list = Orderremittance::model()->getList($condition);
 

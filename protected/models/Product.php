@@ -62,12 +62,8 @@ class Product extends CActiveRecord
         if($condition['productCode']){
             $conStr .= ' and productCode like "%'.$condition['productCode'].'%"';
         }
-        if($condition['receiptId']){
-            $conStr .= ' and receiptId like ='.$condition['receiptId'];
-        }
+
         $criteria = new CDbCriteria();
-        $criteria->select='t.*,r.companyId';
-        $criteria->join = ' join '.Receipt::model()->tableName().' r on(r.id=t.receiptId)'; //连接表
         $criteria->addCondition($conStr);
         $criteria->order='id desc';
         $list = Product::model()->findAll($criteria);
@@ -86,8 +82,11 @@ class Product extends CActiveRecord
                 $data[$k]['safetyStock'] = $v['safetyStock'];
                 $data[$k]['status'] = $v['status'];
                 $data[$k]['remark'] = $v['remark'];
+                $data[$k]['cardinalNumber'] = $v['cardinalNumber'];
+                $data[$k]['content'] = $v['content'];
                 $data[$k]['addDate'] = $v['addDate']?date('Y-m-d',$v['addDate']):'';
                 $company = Company::model()->findByPk($v['companyId']);
+                $data[$k]['companyId'] = $v['companyId'];
                 $data[$k]['companyCode'] = $company['companyCode'];
                 $data[$k]['address'] = $company['address'];
 
@@ -103,19 +102,31 @@ class Product extends CActiveRecord
         if(isset($data['id'])){
             $model =  Product::model()->findByPk($data['id']);
         }else{
-            $model->productCode = date('YmdHis');
-            $model->receiptId = isset($data['receiptId'])?$data['receiptId']:1;
+            $model->productCode = $data['productCode'];
+            $model->companyId = $data['companyId'];
+            $model->number = isset($data['number'])?$data['number']:0;
+            $model->status = 1;
             $model->addDate = time();
         }
         $model->name = isset($data['name'])?$data['name']:'';
-        $model->number = isset($data['number'])?$data['number']:'';
         $model->price = isset($data['price'])?$data['price']:0;
         $model->purchasePrice = isset($data['purchasePrice'])?$data['purchasePrice']:0;
         $model->bagShape = isset($data['bagShape'])?$data['bagShape']:'';
-        $model->weight = isset($data['weight'])?$data['weight']:'';
-        $model->status = 1;
-        $model->remark = $data['remark'];
+        $model->weight = isset($data['weight'])?$data['weight']:0;
+        $model->cardinalNumber = isset($data['cardinalNumber'])?$data['cardinalNumber']:1;
+        $model->content = isset($data['content'])?$data['content']:'';
+        $model->safetyStock=isset($data['safetyStock'])?$data['safetyStock']:1;
         return $model->save();
+    }
+
+
+
+    /*
+   * 根据产品编号获取产品
+   */
+    public function findByProductCode($productCode)
+    {
+        return Product::model()->find('productCode=:productCode', array(':productCode' => $productCode));
     }
     /**
      * Returns the static model of the specified AR class.

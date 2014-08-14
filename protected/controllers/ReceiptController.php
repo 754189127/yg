@@ -37,7 +37,13 @@ class ReceiptController extends BaseController{
     {
         $model = new Receipt();
         if (isset($_POST)) {
-            if ($model->saveData($_POST)){
+            $post = $_POST;
+            unset($post['id']);
+            if($post['companyId']==''){
+                $msg = array('success'=>false,'msg'=>'缺省企业id');
+                exit(CJSON::encode($msg));
+            }
+            if ($model->saveData($post)){
                 $msg = array('success'=>true,'msg'=>'添加成功');
             }else{
                 $msg = array('success'=>false,'msg'=>'添加失败');
@@ -51,6 +57,10 @@ class ReceiptController extends BaseController{
         $model = new Receipt();
         if ($_POST) {
             $post = $_POST;
+            if($post['companyId']==''){
+                $msg = array('success'=>false,'msg'=>'缺省企业id');
+                exit(CJSON::encode($msg));
+            }
             if ($model->saveData($post)){
                 $msg = array('success'=>true,'msg'=>'修改成功');
             }else{

@@ -6,6 +6,7 @@
  */
 class Receipt extends CActiveRecord
 {
+    public $key;
     /**
      * @return string the associated database table name
      */
@@ -66,6 +67,12 @@ class Receipt extends CActiveRecord
         $criteria->addCondition($conStr);
         $criteria->order='id desc';
         $data =  Receipt::model()->findAll($criteria);
+        if($data){
+            foreach($data as $k=>$v){
+                $data[$k]['key'] = $k;
+                $data[$k]['receiptDate']=$v['receiptDate']>0?date('Y-m-d',$v['receiptDate']):'';
+            }
+        }
         return $data;
     }
 
@@ -75,11 +82,11 @@ class Receipt extends CActiveRecord
             $model =  Receipt::model()->findByPk($data['id']);
         }else{
             $model->receiptCode = date('YmdHis');
-            $model->companyId = isset($data['companyId'])?$data['companyId']:1;
+            $model->companyId = isset($data['companyId'])?$data['companyId']:0;
             $model->addDate = time();
         }
         $model->purchaseAmount = isset($data['purchaseAmount'])?$data['purchaseAmount']:0;
-        $model->receiptDate = isset($data['receiptDate'])?$data['receiptDate']:'';
+        $model->receiptDate = isset($data['receiptDate'])?strtotime($data['receiptDate']):'';
         $model->remark = $data['remark'];
         return $model->save();
     }
@@ -88,7 +95,6 @@ class Receipt extends CActiveRecord
         $connection=Yii::app()->db;
         $transaction=$connection->beginTransaction();
         try{
-             Product::model()->deleteAllByAttributes(array('receiptId'=>$id));
              Receipt::model()->deleteByPk($id);
             $transaction->commit();
             return true;

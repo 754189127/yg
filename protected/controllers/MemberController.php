@@ -22,9 +22,14 @@ class MemberController extends BaseController
             'beginDate'=>isset($_POST['beginDate'])?trim($_POST['beginDate']):'',
             'endDate'=>isset($_POST['endDate'])?trim($_POST['endDate']):'',
             'source'=>isset($_POST['source'])?trim($_POST['source']):'',
+            'memberType'=>2
         );
         $list = Member::model()->getMembers($condition);
-
+        if($list){
+            foreach($list as $k=>$v){
+                $list[$k]['source'] =  $v['source']?$this->_setting['memberSource'][$v['source']]:'';
+            }
+        }
         $arr = array('list'=>$list);
         $str = CJSON::encode($arr);
         $callback = isset($_REQUEST['callback'])?$_REQUEST['callback']:'';
@@ -59,6 +64,13 @@ class MemberController extends BaseController
         $memberId = isset($_GET['memberId'])?intval($_GET['memberId']):0;
         $model = new OrderRemittance();
         $list = $model->getListByMemberId($memberId);
+        if($list){
+            foreach($list as $k=>$v){
+                $list[$k]['deliveryMethod'] = $v['deliveryMethod']?$this->_setting['sendMethord'][$v['deliveryMethod']]:'';
+                $list[$k]['paymentMethord'] = $v['paymentMethord']?$this->_setting['paymentMethord'][$v['paymentMethord']]:'';
+                $list[$k]['source'] = $v['source']?$this->_setting['memberSource'][$v['source']]:'';
+              }
+        }
         echo CJSON::encode(array('list'=>$list));
     }
 
@@ -72,6 +84,7 @@ class MemberController extends BaseController
         //地址信息
         $model = new Memberaddrlib();
         $addressList = $model->getListByMemberId($memberId);
+
         echo CJSON::encode(array('info'=>$item,'addressList'=>$addressList));
     }
 
@@ -83,10 +96,19 @@ class MemberController extends BaseController
         $model = new Member();
         if ($_POST) {
             $post = $_POST;
+            if($post['memberType']==''){
+                $msg = array('success'=>false,'msg'=>'会员类型不能为空');
+                exit(CJSON::encode($msg));
+            }
             if($post['realName']==''){
                 $msg = array('success'=>false,'msg'=>'会员姓名不能为空');
                 exit(CJSON::encode($msg));
             }
+            if($post['deliveryMethod']==''){
+                $msg = array('success'=>false,'msg'=>'寄送方式不能为空');
+                exit(CJSON::encode($msg));
+            }
+
             if($post['zipCode']==''){
                 $msg = array('success'=>false,'msg'=>'邮编不能为空');
                 exit(CJSON::encode($msg));
@@ -105,8 +127,16 @@ class MemberController extends BaseController
         $model = new Member();
         if ($_POST) {
             $post = $_POST;
+            if($post['memberType']==''){
+                $msg = array('success'=>false,'msg'=>'会员类型不能为空');
+                exit(CJSON::encode($msg));
+            }
             if($post['realName']==''){
                 $msg = array('success'=>false,'msg'=>'会员姓名不能为空');
+                exit(CJSON::encode($msg));
+            }
+            if($post['deliveryMethod']==''){
+                $msg = array('success'=>false,'msg'=>'寄送方式不能为空');
                 exit(CJSON::encode($msg));
             }
             if($post['zipCode']==''){
@@ -126,10 +156,15 @@ class MemberController extends BaseController
     public function actionDelete($id)
     {
         $model = new Member();
-        if ($model->deleteByPk($id)){
-            $msg = array('success'=>true,'msg'=>'会员删除成功');
+        $count = OrderRemittance::model()->count('memberId=:memberId',array(':memberId'=>$id));
+        if($count>0){
+            $msg = array('success'=>false,'msg'=>'该会员有订单信息，请先删除相关内容');
         }else{
-            $msg = array('success'=>false,'msg'=>'数据删除失败');
+            if ($model->deleteByPk($id)){
+                $msg = array('success'=>true,'msg'=>'会员删除成功');
+            }else{
+                $msg = array('success'=>false,'msg'=>'数据删除失败');
+            }
         }
         exit(CJSON::encode($msg));
     }

@@ -15,10 +15,10 @@ class AjaxController extends BaseController{
      *支付方式
      */
     public function actionPaymentmethord(){
-        $payment = $this->_setting['paymentMethord'];
+        $data = $this->_setting['paymentMethord'];
         $arr = array();
         $i=0;
-        foreach($payment as $k=>$v){
+        foreach($data as $k=>$v){
             $arr[$i]['value'] = $k;
             $arr[$i]['name']= $v;
             $i++;
@@ -30,10 +30,38 @@ class AjaxController extends BaseController{
      * 寄送方式
      */
     public function actionSendmethord(){
-        $send = $this->_setting['sendMethord'];
+        $data = $this->_setting['sendMethord'];
         $arr = array();
         $i=0;
-        foreach($send as $k=>$v){
+        foreach($data as $k=>$v){
+            $arr[$i]['value'] = $k;
+            $arr[$i]['name']= $v;
+            $i++;
+        }
+        echo CJSON::encode(array('list'=>$arr));
+    }
+    /**
+     * 订单来源
+     */
+    public function actionOrdersource(){
+        $data = $this->_setting['orderSource'];
+        $arr = array();
+        $i=0;
+        foreach($data as $k=>$v){
+            $arr[$i]['value'] = $k;
+            $arr[$i]['name']= $v;
+            $i++;
+        }
+        echo CJSON::encode(array('list'=>$arr));
+    }
+    /**
+     * 厂家分类
+     */
+    public function actionCompanytype(){
+        $data = $this->_setting['companyType'];
+        $arr = array();
+        $i=0;
+        foreach($data as $k=>$v){
             $arr[$i]['value'] = $k;
             $arr[$i]['name']= $v;
             $i++;
@@ -41,5 +69,63 @@ class AjaxController extends BaseController{
         echo CJSON::encode(array('list'=>$arr));
     }
 
+
+    /**
+     * 进转损分类
+     */
+    public function actionJzstype(){
+        $data = $this->_setting['jzsType'];
+        $arr = array();
+        $i=0;
+        foreach($data as $k=>$v){
+            $arr[$i]['value'] = $k;
+            $arr[$i]['name']= $v;
+            $i++;
+        }
+        echo CJSON::encode(array('list'=>$arr));
+    }
+
+    /**
+     * 地址分类
+     */
+    public function actionAddresstype(){
+        $data = $this->_setting['addressType'];
+        $arr = array();
+        $i=0;
+        foreach($data as $k=>$v){
+            $arr[$i]['value'] = $k;
+            $arr[$i]['name']= $v;
+            $i++;
+        }
+        echo CJSON::encode(array('list'=>$arr));
+    }
+    /**
+     * 会员分类
+     */
+    public function actionMembertype(){
+        $data = $this->_setting['memberType'];
+        $arr = array();
+        $i=0;
+        foreach($data as $k=>$v){
+            $arr[$i]['value'] = $k;
+            $arr[$i]['name']= $v;
+            $i++;
+        }
+        echo CJSON::encode(array('list'=>$arr));
+    }
+    /**
+     * 会员来源
+     */
+    public function actionMembersource(){
+        $data = $this->_setting['memberSource'];
+        $arr = array();
+        $i=0;
+        foreach($data as $k=>$v){
+            $arr[$i]['value'] = $k;
+            $arr[$i]['name']= $v;
+            $i++;
+        }
+        echo CJSON::encode(array('list'=>$arr));
+    }
 
 }

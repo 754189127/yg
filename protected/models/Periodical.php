@@ -56,13 +56,37 @@ class Periodical extends CActiveRecord
     public function getList($number=0)
     {
         $criteria = new CDbCriteria();
+        $criteria->addCondition('status=1');
         $criteria->order='id desc';
         if($number){
             $criteria->limit=$number;
         }
         $data = Periodical::model()->findAll($criteria);
+        if($data){
+            foreach($data as $k=>$v){
+                $data[$k]['startDate'] = $v['startDate']?date('Y-m-d',$v['startDate']):'';
+                $data[$k]['endDate'] = $v['endDate']?date('Y-m-d',$v['endDate']):'';
+            }
+        }
         return $data;
     }
+
+
+    public function saveData($data){
+        $model = new Periodical();
+        if(isset($data['id'])){
+            $model = Periodical::model()->findByPk($data['id']);
+        }else{
+            $model->code = date('YmdHis');
+            $model->addDate = time();
+            $model->status =1;
+        }
+        $model->title = isset($data['title'])?$data['title']:'';
+        $model->startDate = isset($data['startDate'])?strtotime($data['startDate']):0;
+        $model->endDate = isset($data['endDate'])?strtotime($data['endDate']):0;
+        return $model->save();
+    }
+
     /**
      * Returns the static model of the specified AR class.
      * Please note that you should have this exact method in all your CActiveRecord descendants!

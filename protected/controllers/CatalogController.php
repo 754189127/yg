@@ -10,8 +10,9 @@ class CatalogController extends Controller
 
     public function actionIndex()
     {
-
-        $list = Catalog::model()->getList();
+        $page = isset($_POST['page'])?intval($_POST['page']):1;
+        $condition['page'] = $page;
+        $list = Catalog::model()->getList($condition);
         $arr = array('list'=>$list);
         $str = CJSON::encode($arr);
         $callback = isset($_REQUEST['callback'])?$_REQUEST['callback']:'';

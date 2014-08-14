@@ -7,6 +7,7 @@
  */
 class Member extends CActiveRecord
 {
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -64,8 +65,14 @@ class Member extends CActiveRecord
         if($condition['source']){
             $conStr .= ' and source like ='.$condition['source'];
         }
+        if(isset($condition['memberType'])){
+            $conStr .= ' and memberType  ='.$condition['memberType'];
+        }
+        if(isset($condition['periodicalId']) && $condition['periodicalId']){
+            $conStr .= ' and periodicalId  ='.$condition['periodicalId'];
+        }
         $criteria = new CDbCriteria();
-        $criteria->select = 'id,userCode,realName,status';
+        $criteria->select = 'id,userCode,realName,source';
         $criteria->addCondition($conStr);
         $criteria->order='id desc';
         $items = Member::model()->findAll($criteria);
@@ -80,7 +87,7 @@ class Member extends CActiveRecord
                     $data[$k]['id'] = $val['id'];
                     $data[$k]['userCode'] = $val['userCode'];
                     $data[$k]['realName'] = $val['realName'];
-                    $data[$k]['status'] = $val['status'];
+                    $data[$k]['source'] = $val['source'];
                     if(count($addrList)==1){
                         $data[$k]['address1'] = $addrList[0]['address'];
                         $data[$k]['address2'] = '';
@@ -115,8 +122,13 @@ class Member extends CActiveRecord
         $model->source = isset($data['source'])?$data['source']:1;
         $model->sex = isset($data['sex'])?$data['sex']:1;
         $model->birth =  isset($data['birth'])?$data['birth']:0;
-        $model->status = isset($data['status'])?$data['status']:1;
+        $model->preferentialTicket=isset($data['preferentialTicket'])?$data['preferentialTicket']:0;
+        $model->unDiscountAmount=isset($data['unDiscountAmount'])?$data['unDiscountAmount']:0;
+        $model->youthStuck=isset($data['youthStuck'])?$data['youthStuck']:0;
+        $model->memberType = isset($data['memberType'])?$data['memberType']:1;
         $model->isAgent = isset($data['isAgent'])?$data['isAgent']:0;
+        $model->graduateDate = isset($data['graduateDate'])?strtotime($data['graduateDate']):0;
+        $model->deliveryMethod = isset($data['deliveryMethod'])?$data['deliveryMethod']:0;
         $model->addDate = time();
         return $model->save();
     }
@@ -133,8 +145,13 @@ class Member extends CActiveRecord
         $model->source = isset($data['source'])?$data['source']:1;
         $model->sex = isset($data['sex'])?$data['sex']:1;
         $model->birth =  isset($data['birth'])?$data['birth']:0;
-        $model->status = isset($data['status'])?$data['status']:1;
+        $model->memberType = isset($data['memberType'])?$data['memberType']:1;
         $model->isAgent = isset($data['isAgent'])?$data['isAgent']:0;
+        $model->preferentialTicket=isset($data['preferentialTicket'])?$data['preferentialTicket']:0;
+        $model->unDiscountAmount=isset($data['unDiscountAmount'])?$data['unDiscountAmount']:0;
+        $model->youthStuck=isset($data['youthStuck'])?$data['youthStuck']:0;
+        $model->graduateDate = isset($data['graduateDate'])?strtotime($data['graduateDate']):0;
+        $model->deliveryMethod = isset($data['deliveryMethod'])?$data['deliveryMethod']:0;
         return $model->save();
     }
 	/**

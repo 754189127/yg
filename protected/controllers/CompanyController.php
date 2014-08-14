@@ -12,7 +12,8 @@ class CompanyController extends BaseController
     {
         $condition = array(
             'periodicalId'=>isset($_POST['periodicalId'])?trim($_POST['periodicalId']):0,
-            'companyCode'=>isset($_POST['companyCode'])?trim($_POST['companyCode']):'',
+            'companyCode1'=>isset($_POST['companyCode1'])?trim($_POST['companyCode1']):'',
+            'companyCode2'=>isset($_POST['companyCode2'])?trim($_POST['companyCode2']):'',
             'address'=>isset($_POST['address'])?trim($_POST['address']):'',
             'productCode'=>isset($_POST['productCode'])?trim($_POST['productCode']):''
         );

@@ -59,8 +59,12 @@ class Company extends CActiveRecord
         if($condition['periodicalId']){
             $conStr .= ' and periodicalId ='.$condition['periodicalId'];
         }
-        if($condition['companyCode']){
-            $conStr .= ' and companyCode like "%'.$condition['companyCode'].'%"';
+        if($condition['companyCode1'] && $condition['companyCode2']){
+            $conStr .= ' and companyCode >= '.$condition['companyCode1'].' and companyCode <= '.$condition['companyCode2'];
+        }else if($condition['companyCode1'] && $condition['companyCode2']==''){
+            $conStr .= ' and companyCode like "%'.$condition['companyCode1'].'%"';
+        }else if($condition['companyCode2'] && $condition['companyCode1']==''){
+            $conStr .= ' and companyCode like "%'.$condition['companyCode2'].'%"';
         }
         if($condition['address']){
             $conStr .= ' and address like "%'.$condition['address'].'%"';
@@ -100,7 +104,9 @@ class Company extends CActiveRecord
          return $model->save();
     }
 
-
+      public function findByCompanyCode($companyCode){
+          return Company::model()->find('companyCode=:companyCode', array(':companyCode' => $companyCode));
+      }
     /**
      * Returns the static model of the specified AR class.
      * Please note that you should have this exact method in all your CActiveRecord descendants!

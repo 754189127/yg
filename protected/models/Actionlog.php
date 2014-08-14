@@ -53,6 +53,23 @@ class Actionlog extends CActiveRecord
 		return parent::model($className);
 	}
 
+    public function getList($con){
+        $criteria = new CDbCriteria();
+        $criteria->order='logDate desc';
+        $count = Actionlog::model()->count($criteria);
+        $pager = new CPagination($count);
+        $pager->pageSize = 20;
+        $pager->setCurrentPage($con['page']);
+        $pager->applyLimit($criteria);
+        $data =  Actionlog::model()->findAll($criteria);
+        if($data){
+            foreach($data as $k=>$val){
+                $data[$k]['logDate'] = date('Y-m-d H:i:s',$val['logDate']);
+            }
+        }
+        return array('list'=>$data,'paper'=>$pager);
+    }
+
     public function saveLog($action,$username){
         $model = new Actionlog();
         $model->action=$action;
@@ -62,4 +79,9 @@ class Actionlog extends CActiveRecord
         $model->userId = isset($userId)?intval($userId):0;
         $model->save();
     }
+
+   public  function deleteData(){
+       $datetime = time()-30*24*3600;
+       return Actionlog::deleteAllByAttributes(array(),'logDate<:datetime',array("datetime"=>$datetime));
+   }
 }

@@ -17,34 +17,56 @@ class PeriodicalController extends Controller
     {
         $model = new Periodical();
         if (isset($_POST)) {
-            $model->attributes = '';
-            if ($model->save())
-                exit(1);
-            else
-                exit(0);
+            $post = $_POST;
+            if($post['title']==''){
+                $msg = array('success'=>false,'msg'=>'期数名称不能为空');
+                exit(CJSON::encode($msg));
+            }
+            if($post['startDate']==''){
+                $msg = array('success'=>false,'msg'=>'开始日期不能为空');
+                exit(CJSON::encode($msg));
+            }
+            if($post['endDate']==''){
+                $msg = array('success'=>false,'msg'=>'结束日期不能为空');
+                exit(CJSON::encode($msg));
+            }
+            if ($model->saveData($post)){
+                $msg = array('success'=>true,'msg'=>'保存成功');
+            }else{
+                $msg = array('success'=>false,'msg'=>'保存失败');
+            }
+            exit(CJSON::encode($msg));
         }
     }
 
-    public function actionUpdate($id)
+    public function actionUpdate()
     {
-        $model = $this->loadModel($id);
-        if (isset($_POST['Member'])) {
-            $model->attributes = $_POST['Member'];
-            if ($model->save())
-                exit(1);
-            else
-                exit(0);
+        $model = new Periodical();
+        if (isset($_POST)) {
+            $post = $_POST;
+            if($post['title']==''){
+                $msg = array('success'=>false,'msg'=>'期数名称不能为空');
+                exit(CJSON::encode($msg));
+            }
+            if($post['startDate']==''){
+                $msg = array('success'=>false,'msg'=>'开始日期不能为空');
+                exit(CJSON::encode($msg));
+            }
+            if($post['endDate']==''){
+                $msg = array('success'=>false,'msg'=>'结束日期不能为空');
+                exit(CJSON::encode($msg));
+            }
+            if ($model->saveData($post)){
+                $msg = array('success'=>true,'msg'=>'保存成功');
+            }else{
+                $msg = array('success'=>false,'msg'=>'保存失败');
+            }
+            exit(CJSON::encode($msg));
         }
     }
 
 
-    public function actionDelete($id)
-    {
-        if ($this->loadModel($id)->delete())
-            exit(1);
-        else
-            exit(0);
-    }
+
 
 
     public function loadModel($id)
